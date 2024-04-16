@@ -1,5 +1,9 @@
 # Webapp-security
-Class assignment 1 - input validation
+Class assignment 2 - authentication
 
-main.html : the student registeration page. the form secured with input validation. Register button leads to create_reservation.php
-loginform.html : the login page. the Login button directs the user to authenticate.php
+registeration.html : the student registeration page. the form secured with input validation. Register button leads to db_connect.php
+db_connect.html: validates the input again before adding it to the database
+validation.js: also validates the from in registeration.html
+loginform.html : the login page. the Login button sends the input to authenticate.php
+authentication.php: authenthicate the input from loginform.html
+
