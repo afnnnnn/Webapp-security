@@ -5,8 +5,8 @@ require_once 'db_connect.php';
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the email and password from the form
-    $email = $_POST['emaillogin'];
-    $password = $_POST['passwordlogin'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     // Perform the authentication
     if (authenticateUser($conn, $email, $password)) {
@@ -31,4 +31,20 @@ function authenticateUser($conn, $email, $password) {
         return false;
     }
 }
+// Start a session
+session_start();
+
+// Generate a session ID
+$sessionId = session_id();
+
+// Store the session ID in a session variable
+$_SESSION['sessionId'] = $sessionId;
+
+// Show the session ID to the user
+echo "Session ID: " . $sessionId;
+// Create a next button that sends the user to home.html
+echo '<form action="home.php">
+    <input type="submit" value="Next">
+      </form>';
+?>
 ?>
