@@ -10,6 +10,8 @@ CSRF defense:
 -  Include the CSRF token as a hidden field in the form: registeration.html line 88
 -  Verify the CSRF token before processing the form data: add_students.php line 34-37
 
+  
+Files:
 registeration.html : the student registeration page. the form secured with input validation. Register button leads to add_students.php
 
 db_connect.html: validates the input again before adding it to the database
