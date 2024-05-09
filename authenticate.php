@@ -1,4 +1,7 @@
 <?php
+// Set the Content-Security-Policy header(only allow scripts from the same domain)
+header("Content-Security-Policy: script-src 'self'");
+
 // Include the database connection file
 require_once 'db_connect.php';
 
@@ -7,6 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Get the email and password from the form
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    // Validate the email(XSS defense)
+    $email = $_POST['email'];
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Invalid email format");
+}
 
     // Perform the authentication
     if (authenticateUser($conn, $email, $password)) {
@@ -46,5 +55,4 @@ echo "Session ID: " . $sessionId;
 echo '<form action="home.php">
     <input type="submit" value="Next">
       </form>';
-?>
 ?>
